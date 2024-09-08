@@ -53,7 +53,7 @@ npx autocannon -d 11 --renderStatusCodes http://localhost:80/fibonacci/10
 
 ### Проверка нагрузки через pm2
 
-(410k requests in 11.01s, 109 MB read) хотя и без балансировки pm2 не плохо справляется кластерами
+(410k requests in 11.01s, 109 MB read) хотя и без балансировки nginx, pm2 и так не плохо справляется кластерами и сам балансирует нагрузку
 
 ```bash
 npx autocannon -d 11 --renderStatusCodes http://localhost:3000/fibonacci/10
