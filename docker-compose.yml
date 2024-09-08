@@ -3,18 +3,15 @@ version: '3.8'
 services:
   app_node:
     build:
-      context: ./src
+      context: .
       dockerfile: Dockerfile
     container_name: node_application
     ports:
       - '3000:3000'
     networks:
       - app_network
-    restart: unless-stopped
     environment:
       NODE_ENV: development
-    volumes:
-      - ./src:/var/www/app_node
 
   nginx:
     image: nginx:stable-alpine

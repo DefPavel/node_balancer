@@ -19,9 +19,9 @@
 ```bash
 /node_balancer
   |-- Dockerfile               # Dockerfile для сборки приложения Node.js
-  |-- app.js                   # Основное приложение Node.js
+  |-- src/app.js               # Основное приложение Node.js
   |-- package.json             # Зависимости Node.js
-  |-- nginx.conf               # Конфигурационный файл Nginx
+  |-- nginx/nginx.conf         # Конфигурационный файл Nginx
   |-- docker-compose.yml       # Конфигурация Docker Compose
 ```
 
@@ -40,4 +40,21 @@ docker-compose up --build
 
 ```bash
 http://localhost:80
+```
+
+### Проверка нагрузки через nginx
+
+(28231 2xx responses, 21895 non 2xx responses
+50k requests in 11.01s, 22.3 MB read)
+
+```bash
+npx autocannon -d 11 --renderStatusCodes http://localhost:80/fibonacci/10
+```
+
+### Проверка нагрузки через pm2
+
+(410k requests in 11.01s, 109 MB read) хотя и без балансировки pm2 не плохо справляется кластерами
+
+```bash
+npx autocannon -d 11 --renderStatusCodes http://localhost:3000/fibonacci/10
 ```

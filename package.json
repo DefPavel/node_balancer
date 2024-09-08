@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"description": "Этот проект демонстрирует, как запустить приложение Node.js с PM2 в кластерном режиме, используя Nginx как балансировщик нагрузки и Docker Compose для оркестрации сервисов.",
 	"scripts": {
-		"start": "node ./scr/app.js"
+		"start": "node ./scr/app.js",
+		"lint": "eslint ."
 	},
 	"keywords": [],
 	"author": "DefPavel",
@@ -11,5 +12,10 @@
 	"dependencies": {
 		"dotenv": "^16.4.5",
 		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.10.0",
+		"eslint": "^9.10.0",
+		"globals": "^15.9.0"
 	}
 }
