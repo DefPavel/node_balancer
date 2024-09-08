@@ -1,25 +1,37 @@
-version: '3'
+version: '3.8'
+
 services:
   app_node:
-    build: ./src
+    build:
+      context: ./src
+      dockerfile: Dockerfile
     container_name: node_application
     ports:
       - '3000:3000'
     networks:
       - app_network
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./src:/var/www/app_node
 
   nginx:
     image: nginx:stable-alpine
     container_name: nginx_balancer
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - '80:80'
     depends_on:
       - app_node
     networks:
       - app_network
+    restart: unless-stopped
 
 networks:
   app_network:
     driver: bridge
+
+volumes:
+  app_data:
