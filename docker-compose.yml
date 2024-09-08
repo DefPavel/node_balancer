@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app_node:
+    build: ./src
+    container_name: node_application
+    ports:
+      - '3000:3000'
+    networks:
+      - app_network
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx_balancer
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - '80:80'
+    depends_on:
+      - app_node
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

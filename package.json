@@ -1,0 +1,15 @@
+{
+  "name": "node_balancer",
+  "version": "1.0.0",
+  "description": "Этот проект демонстрирует, как запустить приложение Node.js с PM2 в кластерном режиме, используя Nginx как балансировщик нагрузки и Docker Compose для оркестрации сервисов.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
